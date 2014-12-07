@@ -1,10 +1,12 @@
 //!OpenSCAD
-first_floor_base = 20;
-first_floor_height = 25;
+first_floor_level = 21;
+first_floor_base = 19;
+first_floor_height = 40;
+first_floor_orbit = 25;
 
-second_floor_base = 15;
-second_floor_height = 20;
-second_floor_orbit = 20;
+second_floor_base = 13;
+second_floor_height = 40;
+second_floor_orbit = 16;
 
 difference(){
 
@@ -18,20 +20,20 @@ difference(){
 	// cut-outs
 
 	// first floor
-	translate([-20,0,25]){
-		cylinder(r1=first_floor_base,r2=1,h=first_floor_height);
+	translate([-first_floor_orbit,0,first_floor_level]){
+		#cylinder(r1=first_floor_base,r2=1,h=first_floor_height);
 	}
 
-	translate([20,0,25]){
+	translate([first_floor_orbit,0,first_floor_level]){
 		cylinder(r1=first_floor_base,r2=1,h=first_floor_height);
 	}
 
 	rotate([0,0,90]){
-		translate([-20,0,25]){
+		translate([-first_floor_orbit,0,first_floor_level]){
 			cylinder(r1=first_floor_base,r2=1,h=first_floor_height);
 		}
 
-		translate([20,0,25]){
+		translate([first_floor_orbit,0,first_floor_level]){
 			cylinder(r1=first_floor_base,r2=1,h=first_floor_height);
 		}
 	}
@@ -39,7 +41,7 @@ difference(){
 		// second floor
 		rotate([0,0,45]){
 		translate([-second_floor_orbit,0,55]){
-			cylinder(r1=second_floor_base,r2=1,h=second_floor_height);
+			#cylinder(r1=second_floor_base,r2=1,h=second_floor_height);
 		}
 
 		translate([second_floor_orbit,0,55]){
@@ -67,6 +69,9 @@ difference(){
 		}
 	}
 	*/
+
+	// sensor wire hole
+	cylinder(r=1,h=110);
 
 	// breadboard bounding box
 	translate([-25,-17,0]){
